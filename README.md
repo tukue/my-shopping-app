@@ -35,7 +35,7 @@ A modern e-commerce shopping application built with React and Vite, featuring pr
 
 1. Clone the repository
 ```bash
-git clone [your-repo-url]
+git clone 
 
 install dependency : 
 npm install

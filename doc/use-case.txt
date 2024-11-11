@@ -1,0 +1,30 @@
+graph TD
+    Customer[Customer]
+    Admin[Admin]
+    
+    subgraph Shopping System
+        UC1[Browse Products]
+        UC2[Search Products]
+        UC3[Manage Cart]
+        UC4[Place Order]
+        UC5[Track Order]
+        UC6[Chat with Bot]
+        UC7[Manage Profile]
+        UC8[Process Payment]
+        UC9[Manage Products]
+        UC10[Manage Orders]
+        UC11[Generate Reports]
+    end
+
+    Customer --> UC1
+    Customer --> UC2
+    Customer --> UC3
+    Customer --> UC4
+    Customer --> UC5
+    Customer --> UC6
+    Customer --> UC7
+    Customer --> UC8
+    
+    Admin --> UC9
+    Admin --> UC10
+    Admin --> UC11

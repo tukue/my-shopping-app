@@ -1,0 +1,46 @@
+stateDiagram-v2
+    [*] --> Created
+    Created --> Processing: Payment Confirmed
+    Processing --> Shipped: Items Shipped
+    Shipped --> Delivered: Delivery Confirmed
+    Delivered --> [*]
+    
+    Created --> Cancelled: Cancel Order
+    Processing --> Cancelled: Cancel Order
+    Cancelled --> [*]
+
+
+componenet diagram : 
+graph TD
+    subgraph Frontend
+        UI[User Interface]
+        RC[React Components]
+        RS[Redux Store]
+    end
+
+    subgraph Backend
+        API[API Gateway]
+        Auth[Authentication]
+        PS[Product Service]
+        OS[Order Service]
+        CS[Cart Service]
+        CB[Chatbot Service]
+    end
+
+    subgraph Database
+        DB[(Main Database)]
+        Cache[(Redis Cache)]
+    end
+
+    UI --> RC
+    RC --> RS
+    RC --> API
+    API --> Auth
+    API --> PS
+    API --> OS
+    API --> CS
+    API --> CB
+    PS --> DB
+    OS --> DB
+    CS --> Cache
+    CB --> Cache

@@ -1,0 +1,15 @@
+graph TD
+    Start((Start)) --> Browse[Browse Products]
+    Browse --> Search[Search Products]
+    Search --> AddCart[Add to Cart]
+    AddCart --> ViewCart[View Cart]
+    ViewCart --> UpdateCart[Update Cart]
+    UpdateCart --> Checkout[Checkout]
+    Checkout --> Payment[Process Payment]
+    
+    Payment --> Success{Payment Success?}
+    Success -->|Yes| CreateOrder[Create Order]
+    Success -->|No| ViewCart
+    
+    CreateOrder --> Confirm[Order Confirmation]
+    Confirm --> End((End))

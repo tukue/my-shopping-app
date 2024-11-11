@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant U as User
+    participant C as Cart
+    participant O as Order
+    participant P as Payment
+    participant I as Inventory
+
+    U->>C: Initiate Checkout
+    C->>C: Validate Cart Items
+    C->>I: Check Stock Availability
+    I-->>C: Stock Status
+    
+    alt Stock Available
+        C->>O: Create Order
+        O->>P: Process Payment
+        
+        alt Payment Successful
+            P-->>O: Payment Confirmed
+            O->>I: Update Inventory
+            O-->>U: Order Confirmed
+        else Payment Failed
+            P-->>O: Payment Failed
+            O-->>U: Payment Error
+        end
+        
+    else Stock Unavailable
+        C-->>U: Items Out of Stock
+    end
